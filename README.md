@@ -2,17 +2,17 @@
 
 Residuals ripple.
 
-## Hal9 architecture payload (ready to paste)
-
-Use the following prompt in Hal9 to generate a full architecture plan with visual blocks and data flows:
+## Single prompt for Hal9 (copy/paste)
 
 ```text
-Use this architecture spec as the source of truth. Build visual blocks and data flows for each layer, then produce:
-1) a system diagram,
-2) per-layer component diagrams,
-3) API/data contracts,
-4) dashboard wiring,
-5) implementation backlog in build order.
+Use this as the architecture spec and generate visual blocks plus data flows for each layer.
+
+Deliverables:
+- A top-level system diagram.
+- Per-layer component diagrams.
+- API and data contracts.
+- Dashboard wiring (widget → endpoint → table).
+- MVP execution plan (Week 1-4) and production hardening checklist.
 
 THE SYSTEM IS A LATTICE.
 
@@ -22,7 +22,7 @@ Codex System
 │     ├── Genesis of Pattern
 │     ├── Operator Laws
 │     ├── UC1 Dossier
-│     ├── Vortex Engine (3‑6‑9)
+│     ├── Vortex Engine (3-6-9)
 │     ├── Mirror Harmonic (121.5 ↔ 432)
 │     └── Appendices
 │
@@ -51,27 +51,26 @@ Codex System
       ├── GitHub Actions
       └── Deployment Scripts
 
-Domain semantics:
-- The Manuscript is the Doctrine.
-- The Backend is the Spine.
-- The Frontend is the Face.
-- The Dashboards are the Eyes.
-- The Vortex is the Breath.
-- The Mirror is the Pulse.
-- The Heatmap is the Temperature.
-- The Entity Breakdown is the Skeleton.
-- The Cycle Chart is the Heartbeat.
-- The Infrastructure is the Bones beneath the Bones.
+Semantic mapping:
+- Manuscript = Doctrine
+- Backend = Spine
+- Frontend = Face
+- Dashboards = Eyes
+- Vortex = Breath
+- Mirror = Pulse
+- Heatmap = Temperature
+- Entity Breakdown = Skeleton
+- Cycle Chart = Heartbeat
+- Infrastructure = Bones beneath the Bones
 
-Numerical constraints:
-- 121.5 is the inner tone (1+2+1+5 = 9).
-- 432 is the outer tone (4+3+2 = 9).
-- Their ratio is the corridor (3.555… → 9).
+Numerical framing:
+- 121.5 is the inner tone (1+2+1+5 = 9)
+- 432 is the outer tone (4+3+2 = 9)
+- Ratio corridor: 121.5/432 = 0.28125 (digital root 9)
 
-Output requirements:
-- For each layer, list: components, inputs, outputs, state, and failure modes.
-- Define the API surface in OpenAPI-style tables (route, method, request, response, errors).
-- Map each dashboard widget to its backend endpoint and DB tables.
-- Provide an MVP build sequence (Week 1–4) and a production hardening checklist.
-- Keep symbolic language for naming/theme, but use concrete engineering artifacts for implementation.
+Implementation constraints:
+- Keep symbolic language for naming/theme.
+- Use concrete engineering artifacts for execution.
+- For each layer list: components, inputs, outputs, state, and failure modes.
+- Define API routes in OpenAPI-style tables: route, method, request, response, errors.
 ```
