@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Codex Command Center Dashboard</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header>
+        <h1>Codex Command Center</h1>
+        <p>Monitor operations and generate an automatic performance grade.</p>
+      </header>
+
+      <section class="grid" aria-label="Key metrics">
+        <article class="card">
+          <h2>Throughput</h2>
+          <label for="throughput">Tasks completed / hour</label>
+          <input id="throughput" type="range" min="0" max="100" value="62" />
+          <output id="throughputValue">62</output>
+        </article>
+
+        <article class="card">
+          <h2>Reliability</h2>
+          <label for="reliability">Uptime %</label>
+          <input id="reliability" type="range" min="0" max="100" value="88" />
+          <output id="reliabilityValue">88</output>
+        </article>
+
+        <article class="card">
+          <h2>Quality</h2>
+          <label for="quality">First-pass success %</label>
+          <input id="quality" type="range" min="0" max="100" value="78" />
+          <output id="qualityValue">78</output>
+        </article>
+
+        <article class="card">
+          <h2>Responsiveness</h2>
+          <label for="responsiveness">Avg. latency score</label>
+          <input id="responsiveness" type="range" min="0" max="100" value="71" />
+          <output id="responsivenessValue">71</output>
+        </article>
+      </section>
+
+      <section class="results" aria-live="polite">
+        <p>Weighted score</p>
+        <h2 id="score">0</h2>
+        <p>Grade</p>
+        <h3 id="grade">-</h3>
+        <p id="status" class="status"></p>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
