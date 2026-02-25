@@ -1,0 +1,93 @@
+:root {
+  --bg: #0d1117;
+  --panel: #161b22;
+  --text: #e6edf3;
+  --muted: #8b949e;
+  --accent: #58a6ff;
+  --border: #30363d;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  background: radial-gradient(circle at top, #111827, var(--bg));
+  color: var(--text);
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem 1rem 3rem;
+}
+
+header h1 {
+  margin-bottom: 0.3rem;
+}
+
+header p {
+  color: var(--muted);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.card,
+.results {
+  background: linear-gradient(150deg, rgba(88, 166, 255, 0.06), transparent), var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1rem;
+}
+
+.card h2 {
+  margin-top: 0;
+  margin-bottom: 0.4rem;
+  font-size: 1rem;
+}
+
+label {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+input[type='range'] {
+  width: 100%;
+  margin-top: 0.8rem;
+}
+
+output {
+  margin-top: 0.3rem;
+  display: inline-block;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.results {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+#score {
+  margin: 0;
+  font-size: 2.5rem;
+}
+
+#grade {
+  margin-top: 0.2rem;
+  margin-bottom: 0.3rem;
+  font-size: 2rem;
+  color: var(--accent);
+}
+
+.status {
+  color: var(--muted);
+}
