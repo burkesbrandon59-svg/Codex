@@ -127,3 +127,22 @@ Run tests:
 ```bash
 pytest -q
 ```
+
+
+## 10. Advanced AI UI CLI (New)
+
+This repository also includes an offline-friendly CLI prototype at `agent_loop/advanced_ai_ui_cli.py`.
+
+Example usage:
+
+```bash
+python -m agent_loop.advanced_ai_ui_cli --mode architect --prompt "Design a resilient agent loop"
+python -m agent_loop.advanced_ai_ui_cli --mode debugger --prompt "Investigate flaky tests" --format json
+python -m agent_loop.advanced_ai_ui_cli --prompt "Draft an implementation plan" --stream
+```
+
+The CLI supports:
+- Persona modes (`assistant`, `architect`, `debugger`)
+- Text or JSON output
+- Optional chunked streaming output for a richer terminal experience
+
