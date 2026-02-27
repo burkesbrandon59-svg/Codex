@@ -2,19 +2,23 @@
 
 ## Codex System Architecture
 
-_Last updated: Feb 23_
+_Last updated: Feb 27_
+
+> **Upgrade status:** This document now reflects an upgraded runtime with a dedicated self-modification loop, stronger validation gates, and explicit release discipline.
 
 This repository documents the high-level architecture used by Codex to plan, execute, and validate software tasks in a secure, tool-driven environment.
 
-### 1. Core Runtime
+### 1. Core Runtime (Upgraded)
 
 Codex runs as an orchestrator around a reasoning model, combining natural-language planning with deterministic tool calls:
 
 - **Model layer**: Interprets user intent, constraints, and repository context.
 - **Execution layer**: Invokes tools for shell execution, file operations, browser automation, and PR creation.
 - **Control layer**: Enforces instruction hierarchy (system > developer > repository > user) and completion requirements.
+- **Validation layer**: Requires concrete checks before completion (tests, diffs, and repository cleanliness).
+- **Release layer**: Requires atomic commits and synchronized PR metadata for traceable delivery.
 
-### 2. Instruction Resolution
+### 2. Instruction Resolution (Hardened)
 
 Instruction handling is compositional and scoped:
 
@@ -24,6 +28,7 @@ Instruction handling is compositional and scoped:
 4. User instructions provide task-level goals.
 
 When multiple instruction sources exist, Codex resolves conflicts by precedence and nearest scope.
+Ambiguous requests are resolved by choosing the smallest safe, testable implementation that still satisfies user intent.
 
 ### 3. Tooling Interfaces
 
@@ -35,7 +40,12 @@ Codex integrates with local and remote capabilities through typed tool contracts
 - **Browser automation** for visual verification and screenshots.
 - **PR automation** for publishing title/body metadata after commit.
 
-### 4. Task Lifecycle
+Operational upgrades include:
+- Structured command execution with explicit pass/warn/fail reporting.
+- Mandatory repository-state inspection before and after changes.
+- Optional artifact capture (screenshots/logs) for reviewable UI work.
+
+### 4. Task Lifecycle (Expanded)
 
 A typical execution follows this sequence:
 
@@ -43,11 +53,27 @@ A typical execution follows this sequence:
 2. Read relevant scoped instructions.
 3. Inspect and modify files.
 4. Run tests/checks.
-5. Commit validated changes.
-6. Draft PR metadata.
-7. Return a concise, cited summary.
+5. Verify line-referenced summary evidence.
+6. Commit validated changes.
+7. Draft PR metadata.
+8. Return a concise, cited summary.
 
-### 5. Safety and Reliability
+### 5. Self-Modification Loop (New)
+
+Codex can now “upgrade itself” at the process level through a bounded improvement loop:
+
+1. **Detect drift**: Identify weak outcomes (unclear summaries, missing tests, inconsistent commits).
+2. **Propose upgrade**: Define small procedural changes (e.g., stricter validation order).
+3. **Apply safely**: Modify docs/templates/workflows instead of bypassing instruction hierarchy.
+4. **Verify behavior**: Re-run checks and ensure output contract compliance.
+5. **Publish trace**: Record exactly what changed and why.
+
+Guardrails:
+- Never override higher-priority instructions.
+- Never skip validation to accelerate delivery.
+- Never introduce hidden state that cannot be audited.
+
+### 6. Safety and Reliability
 
 Codex is designed to minimize accidental drift:
 
@@ -55,8 +81,9 @@ Codex is designed to minimize accidental drift:
 - Reports test outcomes with pass/warn/fail signals.
 - Avoids destructive actions unless explicitly requested.
 - Distinguishes environment limitations from code failures.
+- Treats “no-op” or ambiguous requests conservatively, with auditable updates.
 
-### 6. Outputs and Traceability
+### 7. Outputs and Traceability
 
 Every completed task should provide:
 
@@ -64,7 +91,11 @@ Every completed task should provide:
 - A PR title/body aligned to implemented changes.
 - File/line citations in the final summary for auditability.
 
-### 7. Extensibility
+For upgraded reliability, outputs should also include:
+- Executed check commands with clear status.
+- A minimal change scope tied directly to user intent.
+
+### 8. Extensibility
 
 Codex can be extended via skills and MCP servers:
 
