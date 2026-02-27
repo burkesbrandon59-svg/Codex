@@ -104,3 +104,26 @@ Codex can be extended via skills and MCP servers:
 - **Composable prompts** allow targeted behavior without code changes.
 
 This architecture keeps Codex adaptable while preserving operational consistency across repositories and environments.
+
+## 9. Practical "Self-Replication" Implementation (Safe)
+
+To make the architecture concrete, this repository now includes a small reference implementation in `agent_loop/self_replicator.py`.
+
+It models safe process-level replication as **knowledge transfer**, not autonomous code spreading:
+
+1. Record observations from sibling/previous processes.
+2. Distill reliable lessons above a confidence threshold.
+3. Generate a versioned blueprint another process can load.
+4. Enforce explicit safety flags (`autonomous_spread: false`, `requires_human_trigger: true`).
+
+Run the demo:
+
+```bash
+python agent_loop/self_replicator.py
+```
+
+Run tests:
+
+```bash
+pytest -q
+```
