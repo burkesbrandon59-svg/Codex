@@ -146,3 +146,13 @@ The CLI supports:
 - Text or JSON output
 - Optional chunked streaming output for a richer terminal experience
 
+
+## 11. Package Install Internet Allowlist (New)
+
+The repository now includes `agent_loop/package_install_allowlist.py`, which codifies
+an explicit set of package-source domains allowed for internet-backed dependency
+installation workflows.
+
+Use `is_allowed_package_source(...)` to validate an incoming URL or hostname
+against this allowlist, including trusted subdomains.
+
