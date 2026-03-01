@@ -142,7 +142,14 @@ python -m agent_loop.advanced_ai_ui_cli --prompt "Draft an implementation plan" 
 ```
 
 The CLI supports:
-- Persona modes (`assistant`, `architect`, `debugger`)
+- Persona modes (`assistant`, `architect`, `debugger`, `ghost`)
+- Training baselines (`offline`, `internet`) via `--training-baseline`
 - Text or JSON output
 - Optional chunked streaming output for a richer terminal experience
+
+Ghost shell shortcut:
+
+```bash
+./scripts/ghost_in_machine_shell.sh
+```
 
